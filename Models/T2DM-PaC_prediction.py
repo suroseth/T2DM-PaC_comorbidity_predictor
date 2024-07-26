@@ -1,8 +1,8 @@
 ###########################################################################################
-# To make prediction of T2DM-PaC comorbidity
+# To predict T2DM-PaC comorbidity
 # Input: pre-processed and normalized gene expression data
-# OUTPUT : Score file with 3 columns, for T2DM prediction, PaC prediction and comorbidity prediction.  
-# OUTPT: 1 indicate presence and 0 indicate absence of respective disease
+# OUTPUT: Score file with 3 columns, for T2DM prediction, PaC prediction, and comorbidity prediction.  
+# OUTPT: '1' indicates the presence and '0' indicates the absence of respective disease
 ###########################################################################################
 
 # Data processing
@@ -17,7 +17,7 @@ import dill
 input_data = pd.read_csv('normalized_data_combat_67features.csv')
 input_data = input_data.transpose()
 input_data.columns = input_data.iloc[0,]
-input_data.drop(["X"], inplace = True)
+input_data.drop(["genes"], inplace = True)
 sample_index = input_data.index
 input_data_2 =np.array(input_data)
 
