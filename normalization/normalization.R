@@ -76,7 +76,7 @@ if(length(input_data) >= 1)
 features = read.csv("comorbidity_features_list.csv",header = FALSE)
 
 data_67_genes = normalized_data_combat[row.names(normalized_data_combat) %in% features$V1, ]
-if(length(data_67_genes) != length(features$V1))
+if(length(data_67_genes[,1]) != length(features$V1))
 {print("Input data does not have all the 67 gene featurres")  }
 data_67_genes = cbind(row.names(data_67_genes),data_67_genes)
 colnames(data_67_genes)[1] = "genes"
