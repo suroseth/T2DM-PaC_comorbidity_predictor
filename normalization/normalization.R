@@ -2,7 +2,6 @@
 # To normalize T2DM-PaC comorbidity
 # Input: given preprocessed sample files or your preprocessed gene expression data in CSV format
 # OUTPUT: normalized gene expression values for 67 gene comorbidity features.  
-# OUTPT: '1' indicates the presence and '0' indicates the absence of respective disease
 ###########################################################################################
 
 library(sva)
