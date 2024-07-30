@@ -4,6 +4,14 @@
 # OUTPUT: Score file with 3 columns, for T2DM prediction, PaC prediction, and comorbidity prediction.  
 # OUTPT: '1' indicates the presence and '0' indicates the absence of respective disease
 ###########################################################################################
+#install required packages 
+pip install pickle
+pip install pandas
+pip install numpy
+pip install repeat
+pip install os
+pip install dill
+pip install scikit-optimize
 
 # Data processing
 import pickle
@@ -12,6 +20,7 @@ import numpy as np
 from itertools import repeat
 import os
 import dill
+import skopt
 
 #data loading
 input_data = pd.read_csv('normalized_data_combat_67features.csv')
