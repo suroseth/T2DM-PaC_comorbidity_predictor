@@ -3,6 +3,10 @@
 # Input: given preprocessed sample files or your preprocessed gene expression data in CSV format
 # OUTPUT: normalized gene expression values for 67 gene comorbidity features.  
 ###########################################################################################
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("sva")
 
 library(sva)
 input_data =  "input_file_name.csv"
