@@ -9,7 +9,7 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install("sva")
 
 library(sva)
-input_data =  "input_file_name.csv"
+input_data =  NULL
 if(length(input_data) >= 1)
 {
   eset_gse15932 = read.csv("result_preprocessing_gse15932_3.csv",row.names = 1)
