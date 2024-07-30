@@ -1,0 +1,18 @@
+﻿1. Download all files from both folders.
+2. Files description-
+* normalization.R file is to normalize the preprocessed gene expression data. T2DM-PaC_prediction_model.py file is for making predictions.
+* result_preprocessing_GSE74629_3.csv, result_preprocessing_gse15932_3.csv gene expression files with T2DM-PaC and healthy samples data.
+* comorbidity_features_list.csv contains the list of selected 67 comorbidity feature genes.
+* gnb_pac.sav, xgb_pac.sav trained model for PaC prediction.
+* svm_t2d.sav,lr_t2d.sav trained model for T2DM prediction.
+3. Replace “NULL” with your file name OR you can proceed with the sample files given. 
+4. Genes should be given in rows and samples should be given in columns. 
+5. Run “normalization.R” in R for normalization of preprocessed data.
+* To normalize T2DM-PaC comorbidity
+* Input: given preprocessed sample files or your preprocessed gene expression data in CSV format
+* OUTPUT: normalized gene expression values for 67 gene comorbidity features.  
+6. Run “T2DM-PaC_prediction_model.py” in Python for comorbidity prediction.
+* To predict T2DM-PaC comorbidity
+* Input: pre-processed and normalized gene expression data
+* OUTPUT: Score file with 3 columns, for T2DM prediction, PaC prediction, and comorbidity prediction.  
+* OUTPT: '1' indicates the presence and '0' indicates the absence of respective disease
