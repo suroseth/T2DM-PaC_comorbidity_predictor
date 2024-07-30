@@ -42,19 +42,6 @@ tempa=collapseRows(exp_mat, rowGroup=gene_symbol,rowID=rownames(exp_mat), method
 avg_exp_mat=tempa$datETcollapsed
 View(avg_exp_mat)
 
-#designing case and control
-gsms <- "1111111100000000"
-sml <- strsplit(gsms, split="")[[1]]
-sel <- which(sml != "X")
-eset_f = avg_exp_mat[ ,sel]#extracting required samples
-View(eset_f)
-
+eset_f = avg_exp_mat
 eset_gse15932  = as.matrix(eset_f)
-colnames(eset_gse15932)
-col_name = c( "GSM399666","GSM399667","GSM399669","GSM399676","GSM399679",
-              "GSM399682","GSM399685","GSM399689","GSM399717","GSM399718",
-              "GSM399719","GSM399761","GSM399762","GSM399763","GSM399765",
-              "GSM399766") 
-colnames(eset_gse15932) = col_name
-View(eset_gse15932)
-write.csv(eset_gse15932,"result_preprocessing_gse15932_3.csv")
+write.csv(eset_gse15932,"result_preprocessing_gse15932.csv")
