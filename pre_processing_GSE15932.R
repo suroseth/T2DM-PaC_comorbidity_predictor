@@ -42,6 +42,7 @@ tempa=collapseRows(exp_mat, rowGroup=gene_symbol,rowID=rownames(exp_mat), method
 avg_exp_mat=tempa$datETcollapsed
 View(avg_exp_mat)
 
-eset_f = avg_exp_mat
-eset_gse15932  = as.matrix(eset_f)
-write.csv(eset_gse15932,"result_preprocessing_gse15932.csv")
+eset_gse15932  = as.matrix(avg_exp_mat)
+View(eset_gse15932)
+eset_gse15932 = eset_gse15932[-which(rownames(eset_gse15932) == 'NA'),]
+write.csv(eset_gse15932,"result_preprocessing_two_sample.csv")
