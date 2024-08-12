@@ -23,7 +23,8 @@ import dill
 import skopt
 
 #data loading
-input_data = pd.read_csv('normalized_data_combat_67features.csv')
+input_file_name = "normalized_data_combat_67features.csv" #change file name with your input file
+input_data = pd.read_csv(input_file_name)
 input_data = input_data.transpose()
 input_data.columns = input_data.iloc[0,]
 input_data.drop(["genes"], inplace = True)
