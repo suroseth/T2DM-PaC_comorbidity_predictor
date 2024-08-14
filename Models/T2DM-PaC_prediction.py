@@ -4,12 +4,16 @@
 # OUTPUT: Score file with 3 columns, for T2DM prediction, PaC prediction, and comorbidity prediction.  
 # OUTPT: '1' indicates the presence and '0' indicates the absence of respective disease
 ###########################################################################################
+# load the expression values of 67 genes features (upload in google colab drive) 
+# upload the model files gnb_pac.sav, xgb_pac.sav, svm_t2d.sav, lr_t2d.sav, (upload in google colab drive)
+
+
 #install required packages 
-pip install pickle
-pip install pandas
-pip install numpy
-pip install repeat
-pip install os
+pip install pickle # usually not required in google colab
+pip install pandas # usually not required in google colab
+pip install numpy # usually not required in google colab
+pip install repeat # usually not required in google colab
+pip install os # usually not required in google colab
 pip install dill
 pip install scikit-optimize
 
@@ -23,23 +27,13 @@ import dill
 import skopt
 
 #data loading
-input_file_name = "normalized_data_combat_67features.csv" #change file name with your input file
+input_file_name = "input.csv" #change file name with your input file
 input_data = pd.read_csv(input_file_name)
 input_data = input_data.transpose()
 input_data.columns = input_data.iloc[0,]
 input_data.drop(["genes"], inplace = True)
 sample_index = input_data.index
 input_data_2 =np.array(input_data)
-
-####MODEL LOADING####
-#load PaC model
-pac_gnb_model = pickle.load(open('gnb_pac.sav', 'rb'))
-pac_xgb_model = pickle.load(open('xgb_pac.sav', 'rb'))
-cutoff_threshold_pac = 0.48
-#load t2D model
-t2d_svm_model = pickle.load(open('svm_t2d.sav', 'rb'))
-t2d_lr_model = pickle.load(open('lr_t2d.sav', 'rb'))
-cutoff_threshold_t2d = 0.52
 
 ####MODEL LOADING####
 #load PaC model
@@ -78,4 +72,4 @@ results_como = (average_prediction == 1).astype(int)
 df_c = pd.concat([results_pac_test,results_t2d_test,results_como], axis=1)
 df_c.columns = ["PaC_prediction","T2D_prediction","comorbidity_prediction"]
 df_c.index = sample_index
-df_c.to_csv("T2DM_PaC_comorbidity_prediction_result.csv")#,index = False)
+df_c.to_csv("Output.csv")#,index = False)
