@@ -72,4 +72,4 @@ results_como = (average_prediction == 1).astype(int)
 df_c = pd.concat([results_pac_test,results_t2d_test,results_como], axis=1)
 df_c.columns = ["PaC_prediction","T2D_prediction","comorbidity_prediction"]
 df_c.index = sample_index
-df_c.to_csv("Output.csv")#,index = False)
+df_c.to_csv("output.csv")#,index = False)
