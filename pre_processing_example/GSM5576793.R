@@ -22,4 +22,4 @@ final_data = rbind(data_67_genes_mean ,df_missing)
 colnames(final_data)[1] = "genes"
 final_data = as.data.frame(final_data)
 final_data_1 = final_data[order(final_data$genes,decreasing = FALSE),]
-write.csv(final_data_1,"input.csv",row.names = FALSE)
+write.csv(final_data_1,"input_data.csv",row.names = FALSE)
