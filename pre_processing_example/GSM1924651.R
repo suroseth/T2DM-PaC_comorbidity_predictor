@@ -23,7 +23,7 @@ GPL10558 = cbind(Symbol,ID)
 GPL10558 = as.data.frame(GPL10558)
 View(GPL10558)
 
-#backgroud correction/normalization/log transformation
+# background correction/normalization/log transformation
 eset_B = lumiB(eset, method='forcePositive')
 eset_BT = lumiT(eset_B, method='log2')
 eset_BTN = lumiN(eset_BT, method='quantile')
@@ -51,4 +51,4 @@ colnames(final_data)[1] = "genes"
 final_data = as.data.frame(final_data)
 final_data_1 = final_data[order(final_data$genes,decreasing = FALSE),]
 
-write.csv(final_data,"input_data_GSM1924651.csv",row.names = FALSE)
+write.csv(final_data,"input_data.csv",row.names = FALSE)
