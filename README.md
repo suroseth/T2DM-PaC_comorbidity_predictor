@@ -1,5 +1,4 @@
-T2DM-PaC_predictor is a prediction model for T2DM-PaC comorbidity based on gene expression data.  
-This model is a part of work titled "A Machine Learning Prediction Model for Type 2 Diabetes Mellitus Associated Pancreatic Cancer".
+T2DM-PaC_predictor is a prediction model for T2DM-PaC comorbidity based on gene expression data. This model is a part of work titled "A Machine Learning Prediction Model for Type 2 Diabetes Mellitus Associated Pancreatic Cancer".
 
 **Abstract**
 
