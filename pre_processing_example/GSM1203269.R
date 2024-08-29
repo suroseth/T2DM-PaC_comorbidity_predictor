@@ -1,8 +1,7 @@
 library(GEOquery)
-library(limma)
 library(affy)
 library(dplyr)
-library(hugene10sttranscriptcluster.db)
+library(hugene10sttranscriptcluster.db)# This package will change according to the selected study. This depends upon the GPL used in the study. 
 
 #reading affy data (.cel files) in R
 eset=ReadAffy(celfile.path = "./GSM1203269_RAW")
