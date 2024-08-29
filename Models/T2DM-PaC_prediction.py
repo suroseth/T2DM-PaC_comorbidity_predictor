@@ -27,7 +27,7 @@ import dill
 import skopt
 
 #data loading
-input_file_name = "input.csv" #change file name with your input file
+input_file_name = "input_data.csv" #change file name with your input file
 input_data = pd.read_csv(input_file_name)
 input_data = input_data.transpose()
 input_data.columns = input_data.iloc[0,]
@@ -72,4 +72,4 @@ results_como = (average_prediction == 1).astype(int)
 df_c = pd.concat([results_pac_test,results_t2d_test,results_como], axis=1)
 df_c.columns = ["PaC_prediction","T2D_prediction","comorbidity_prediction"]
 df_c.index = sample_index
-df_c.to_csv("output.csv")#,index = False)
+df_c.to_csv("output_data.csv")#,index = False)
