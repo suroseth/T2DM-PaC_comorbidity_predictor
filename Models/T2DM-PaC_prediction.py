@@ -27,7 +27,8 @@ import dill
 import skopt
 
 #data loading
-input_file_name = "input_data.csv" #change file name with your input file
+os.chdir("./T2DM-PaC_comorbidity_predictor-main")#change working directory
+input_file_name = "./pre_processing_example/input_data.csv" #change file name with your input file
 input_data = pd.read_csv(input_file_name)
 input_data = input_data.transpose()
 input_data.columns = input_data.iloc[0,]
@@ -37,12 +38,12 @@ input_data_2 =np.array(input_data)
 
 ####MODEL LOADING####
 #load PaC model
-pac_gnb_model = pickle.load(open('gnb_pac.sav', 'rb'))
-pac_xgb_model = pickle.load(open('xgb_pac.sav', 'rb'))
+pac_gnb_model = pickle.load(open('./Models/gnb_pac.sav', 'rb'))
+pac_xgb_model = pickle.load(open('./Models/xgb_pac.sav', 'rb'))
 cutoff_threshold_pac = 0.48
 #load t2D model
-t2d_svm_model = pickle.load(open('svm_t2d.sav', 'rb'))
-t2d_lr_model = pickle.load(open('lr_t2d.sav', 'rb'))
+t2d_svm_model = pickle.load(open('./Models/svm_t2d.sav', 'rb'))
+t2d_lr_model = pickle.load(open('./Models/lr_t2d.sav', 'rb'))
 cutoff_threshold_t2d = 0.52
 
 ####MAKING PREDICTION####
@@ -55,9 +56,9 @@ pac_gnb_como = pd.DataFrame(pac_gnb_model.predict_proba(input_data),columns=["0"
 
 ####WEIGHTED MODEL COMBINATION####
 #pac combination
-w_pac_gnb_co = 0.36705669989028306*pac_gnb_como.iloc[:,1]
-w_pac_xgb_co = 0.9861286115801465*pac_xgb_como.iloc[:,1]
-average_predictions_pac = (w_pac_gnb_co + w_pac_xgb_co)/(0.36705669989028306+0.9861286115801465)
+w_pac_gnb_co = 0.5161821449336343*pac_gnb_como.iloc[:,1]
+w_pac_xgb_co = 0.9708451791592324*pac_xgb_como.iloc[:,1]
+average_predictions_pac = (w_pac_gnb_co + w_pac_xgb_co)/(0.5161821449336343+0.9708451791592324)
 results_pac_test = (average_predictions_pac >= cutoff_threshold_pac).astype(int)
 #t2d combination
 w_t2d_svm_co = 0.8262620868032353*t2d_svm_como.iloc[:,1]
