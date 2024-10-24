@@ -1,5 +1,5 @@
 library(GEOquery)
-library(affy)
+library(lumi)
 library(dplyr)
 library(illuminaHumanv4.db)# This package will change according to the selected study. This depends upon the GPL used in the study.
 
