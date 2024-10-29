@@ -1,9 +1,9 @@
 **T2DM-PaC Comorbidity Predictor**
+
 An artificial intelligence model that predicts the likelihood of Type 2 diabetes mellitus-associated pancreatic cancer comorbidity using gene expression profiles.
 This tool is part of the research: "A Machine Learning Prediction Model for Type 2 Diabetes Mellitus Associated Pancreatic Cancer"
-Overview
+
+**Overview**
+
 Leveraging machine learning algorithms to analyze gene expression data, this model helps identify potential pancreatic cancer development in T2DM patients, enabling earlier detection and intervention strategies.
 
-**Abstract**
-
-Individuals with Type 2 Diabetes mellitus (T2DM) face twofold increased risk of pancreatic cancer (PaC). Given this elevated risk, there's a growing demand for early detection and effective screening. We utilized supervised machine learning (ML) to construct models based on gene expression data from blood samples of individuals with T2DM and PaC to aid in comorbidity detection. We extracted comorbidity gene features from literature, differentially expressed genes (DEG), hub genes in weighted gene correlation network analysis, and perturbed genes from pathway simulation using publicly available T2DM-PaC gene expression data. Using these comorbidity features and gene expression from T2DM patients and PaC patients, we created ML models for T2DM and PaC respectively. We explored ten ML algorithms and selected the best-performing model. T2DM and PaC models were integrated using a voting ensemble approach to develop a T2DM-PaC comorbidity prediction model. Final model was tested on T2DM-PaC comorbidity samples, predicting comorbidity if classified as both T2DM and PaC. We identified 16 T2DM-PaC comorbidity genes from literature, 15 DEGs, 22 hub genes, and 15 perturbed genes from gene expression dataset. After removing redundancy, 67 unique genes were established as comorbidity features. The T2DM model achieved an MCC of 0.65 and the PaC model 0.96. The ensemble model, tested on the T2DM-PaC comorbidity dataset, yielded F1 score of 0.89 and MCC of 0.77. This ML based prediction of T2D-PaC comorbidity can help in detection and screening of PaC in T2DM patients using blood gene expression data on 67 genes.  
