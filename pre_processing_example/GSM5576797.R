@@ -1,7 +1,7 @@
 library(dplyr)
 
 #reading normalized sample
-exp_mat = read.table("Control_sample_28.txt",sep = "\t",header = TRUE)
+exp_mat = read.table("Control_sample_32.txt",sep = "\t",header = TRUE)
 eset_merged = as.data.frame(exp_mat)
 
 features = read.csv("comorbidity_features_list.csv",header = FALSE)
