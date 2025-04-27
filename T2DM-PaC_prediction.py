@@ -27,7 +27,7 @@ import dill
 import skopt
 
 #data loading
-os.chdir("./T2DM-PaC_comorbidity_predictor-main")#change working directory
+#os.chdir("./T2DM-PaC_comorbidity_predictor-main")#change working directory
 input_file_name = "./pre_processing_example/input_data.csv" #change file name with your input file
 input_data = pd.read_csv(input_file_name)
 input_data = input_data.transpose()
