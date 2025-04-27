@@ -57,7 +57,7 @@ pac_gnb_como = pd.DataFrame(pac_gnb_model.predict_proba(input_data),columns=["0"
 ####WEIGHTED MODEL COMBINATION####
 #pac combination
 w_pac_gnb_co = 0.5161821449336343*pac_gnb_como.iloc[:,1]
-w_pac_xgb_co = 0.9708451791592324*pac_xgb_como.iloc[:,1]
+w_pac_xgb_co = 0.9856469185969381*pac_xgb_como.iloc[:,1]
 average_predictions_pac = (w_pac_gnb_co + w_pac_xgb_co)/(0.5161821449336343+0.9708451791592324)
 results_pac_test = (average_predictions_pac >= cutoff_threshold_pac).astype(int)
 #t2d combination
