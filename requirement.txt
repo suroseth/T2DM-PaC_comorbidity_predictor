@@ -1,6 +1,6 @@
 pandas(version 2.0.1)
 numpy (version 1.23.5)
 scikit-learn (version 1.5.2)
-xgboost (version )
+xgboost (version 1.7.5)
 dill (version 0.3.6)
 scikit-optimize (version 0.9.0)
