@@ -101,8 +101,11 @@ def adding_parameters(new_counts, parameters, batch_number, gene_list):
     result_df = pd.DataFrame(result_x, index=new_counts.index, columns=new_counts.columns)
     
     return result_df
+ 
 
-
+t2d_combat_param = pd.read_csv("t2d_nor_param.csv",index_col=0)
+pac_combat_param = pd.read_csv("pac_nor_param.csv",index_col=0)
+genes_67_features = pd.read_csv("comorbidity_features.csv")
 
 #data loading
 #os.chdir("./T2DM-PaC_comorbidity_predictor-main")#change working directory
