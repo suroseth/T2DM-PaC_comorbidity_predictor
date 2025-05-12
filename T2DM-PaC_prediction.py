@@ -5,10 +5,7 @@
 # OUTPT: '1' indicates the presence and '0' indicates the absence of respective disease
 ###########################################################################################
 # load the expression values of 67 genes features (upload in google colab drive) 
-# upload the model files gnb_pac.sav, xgb_pac.sav, svm_t2d.sav, lr_t2d.sav, (upload in google colab drive)
-
-
-#install required packages 
+# upload the model files gnb_pac.sav, xgb_pac.sav, svm_t2d.sav, lr_t2d.sav, (upload in google colab drive)#install required packages 
 pip install pickle # usually not required in google colab
 pip install pandas # usually not required in google colab
 pip install numpy # usually not required in google colab
@@ -16,8 +13,9 @@ pip install repeat # usually not required in google colab
 pip install os # usually not required in google colab
 pip install dill
 pip install scikit-optimize
+pip install scipy
 
-# Data processing
+#import all the required packages
 import pickle
 import pandas as pd
 import numpy as np
@@ -26,6 +24,7 @@ import os
 import dill
 import skopt
 from scipy import stats
+
 
 #function to fit into distribution of training set
 def match_quantiles(counts_sub, old_mu, old_phi, new_mu, new_phi):
@@ -101,7 +100,9 @@ def adding_parameters(new_counts, parameters, batch_number, gene_list):
     result_df = pd.DataFrame(result_x, index=new_counts.index, columns=new_counts.columns)
     
     return result_df
- 
+
+
+# Data pre-processing
 
 t2d_combat_param = pd.read_csv("t2d_nor_param.csv",index_col=0)
 pac_combat_param = pd.read_csv("pac_nor_param.csv",index_col=0)
@@ -110,32 +111,35 @@ genes_67_features = pd.read_csv("comorbidity_features.csv")
 #data loading
 #os.chdir("./T2DM-PaC_comorbidity_predictor-main")#change working directory
 input_file_name = "./pre_processing_example/input_data.csv" #change file name with your input file
-input_data = pd.read_csv(input_file_name)
+input_data = pd.read_csv(input_file_name,index_col=0)
+
 #input pac model
 input_data_pac = adding_parameters(input_data, pac_combat_param, batch_number=8, gene_list=genes_67_features['Genes'])
 input_data_pac = input_data_pac.transpose()
-input_data_pac.columns = input_data_pac.iloc[0,]
-input_data_pac.drop(["genes"], inplace = True)
+#input_data_pac.columns = input_data_pac.iloc[0,]
+#input_data_pac.drop(["genes"], inplace = True)
 sample_index = input_data_pac.index
 input_data_pac_2 =np.array(input_data_pac)
 
 #input t2d model
 input_data_t2d = adding_parameters(input_data, t2d_combat_param, batch_number=7, gene_list=genes_67_features['Genes'])
 input_data_t2d = input_data_t2d.transpose()
-input_data_t2d.columns = input_data_t2d.iloc[0,]
-input_data_t2d.drop(["genes"], inplace = True)
+#input_data_t2d.columns = input_data_t2d.iloc[0,]
+#input_data_t2d.drop(["genes"], inplace = True)
 sample_index = input_data_t2d.index
 input_data_t2d_2 =np.array(input_data_t2d)
+
 
 ####MODEL LOADING####
 #load PaC model
 pac_gnb_model = pickle.load(open('./Models/gnb_pac.sav', 'rb'))
 pac_xgb_model = pickle.load(open('./Models/xgb_pac.sav', 'rb'))
-cutoff_threshold_pac = 0.48
+cutoff_threshold_pac = 0.52
 #load t2D model
 t2d_svm_model = pickle.load(open('./Models/svm_t2d.sav', 'rb'))
 t2d_lr_model = pickle.load(open('./Models/lr_t2d.sav', 'rb'))
 cutoff_threshold_t2d = 0.52
+
 
 ####MAKING PREDICTION####
 #t2d prediction
