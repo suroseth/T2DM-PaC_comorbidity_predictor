@@ -38,7 +38,6 @@ def match_quantiles(counts_sub, old_mu, old_phi, new_mu, new_phi):
                 r_old = 1/old_phi[a]  # size parameter (r in negative binomial)
                 p_old = r_old/(r_old + old_mu[a, b])  # convert mu to probability parameter
                 
-                # Calculate CDF (equivalent to pnbinom in R)
                 tmp_p = stats.nbinom.cdf(counts_sub[a, b]-1, r_old, p_old)
                 
                 if abs(tmp_p - 1) < 1e-4:
@@ -47,7 +46,7 @@ def match_quantiles(counts_sub, old_mu, old_phi, new_mu, new_phi):
                     r_new = 1/new_phi[a]  # new size parameter
                     p_new = r_new/(r_new + new_mu[a, b])  # new probability parameter
                     
-                    # Calculate quantile (equivalent to qnbinom in R)
+                    # Calculate quantile
                     new_counts_sub[a, b] = 1 + stats.nbinom.ppf(tmp_p, r_new, p_new)
     
     return new_counts_sub
